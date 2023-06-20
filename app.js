@@ -1,8 +1,12 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
-const router = require("./routes");
 const path = require("path");
+const session = require("express-session");
+const flash = require("express-flash");
+
+const passport = require("./lib/passport");
+const router = require("./routes");
 
 const app = express();
 
@@ -19,6 +23,17 @@ app.use(
   path.join(__dirname, "public")
  )
 );
+
+app.use(
+ session({
+  secret: "Buat ini jadi rahasia",
+  resave: false,
+  saveUninitialized: false,
+ })
+);
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(router);
 

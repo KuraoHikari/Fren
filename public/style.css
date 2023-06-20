@@ -10,3 +10,7 @@
 a {
  text-decoration: none;
 }
+
+.input-box:focus {
+ outline: none;
+}

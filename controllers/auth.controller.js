@@ -3,6 +3,8 @@ const {
  Prisma,
 } = require("@prisma/client");
 const Bcrypt = require("../utils/bcrypt");
+const passport = require("../lib/passport");
+
 const prisma = new PrismaClient();
 
 class AuthController {
@@ -30,10 +32,6 @@ class AuthController {
 
    res.redirect("/login");
   } catch (err) {
-   console.log(
-    "🚀 ~ file: auth.controller.js:33 ~ AuthController ~ register ~ err:",
-    err
-   );
    if (
     err instanceof
     Prisma.PrismaClientKnownRequestError

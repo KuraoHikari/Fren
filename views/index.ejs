@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <%- include("./setups/head") %>
+ </head>
+ <body>
+  <div class="container">
+   <!-- xs NAV BAR -->
+   <nav
+    class="bg-light xs-nav fixed-bottom d-sm-none"
+   >
+    <div class="container-fluid">
+     <div class="row h-50">
+      <div class="col-3">
+       <span
+        ><i
+         class="fa-solid fa-house fs-3 py-3"
+        ></i
+       ></span>
+      </div>
+      <div class="col-3">
+       <span
+        ><i
+         class="fa-solid fa-magnifying-glass fs-2 py-3"
+        ></i
+       ></span>
+      </div>
+      <div class="col-3">
+       <span
+        ><i
+         class="fa-solid fa-bell fs-2 py-3"
+        ></i
+       ></span>
+      </div>
+      <div class="col-3">
+       <span
+        ><i
+         class="fa-solid fa-envelope fs-2 py-3"
+        ></i
+       ></span>
+      </div>
+     </div>
+    </div>
+   </nav>
+   <div class="row">
+    <!-- MAIN SECTION -->
+    <div class="main_bar">
+     <div
+      class="row d-flex justify-content-between align-items-center ps-1"
+     >
+      <div class="col-1 pt-2">
+       <div>
+        <span class="fs-4 fw-bold"
+         >Home</span
+        >
+       </div>
+      </div>
+      <div class="col-1 me-3">
+       <div>
+        <span class="fs-4"
+         ><i
+          class="fa-solid fa-star"
+         ></i>
+        </span>
+       </div>
+      </div>
+     </div>
+     <div class="row mt-4">
+      <div class="col pt-2">
+       <div class="row">
+        <div class="col-2">
+         <img
+          class="rounded-circle"
+          src="/<%= user.imageUrl %>"
+          alt=""
+          height="50px"
+         />
+        </div>
+        <div class="col-9 col-sm-10">
+         <form action="/" method="POST">
+          <input
+           class="border-0 bg form-control-lg"
+           type="text"
+           name="desc"
+           id="desc"
+           placeholder="What's happening?"
+          />
+          <div
+           class="ps-3 d-flex text-info"
+          >
+           <hr />
+          </div>
+          <div
+           class="row pb-2 justify-content-center"
+          >
+           <div class="col-9 text-info">
+            <span class="ps-3"
+             ><i
+              class="fa-solid fa-image"
+             ></i
+            ></span>
+           </div>
+           <div class="col-3 col-sm-2">
+            <button
+             type="submit"
+             class="text-decoration-none fs-6 fw-bold text-white bg-info py-1 px-3 rounded-pill"
+            >
+             Tweet
+            </button>
+           </div>
+          </div>
+         </form>
+        </div>
+       </div>
+
+       <!-- TWEET 1 -->
+       <% if (posts.length < 1) { %>
+       <p class="h3 text-center">
+        No Data
+       </p>
+       <% } else { %> <%
+       posts.forEach((post) => { %>
+       <div
+        class="row mt-1 border d-flex"
+       >
+        <div class="col-3 mt-2">
+         <img
+          class="rounded-circle"
+          src="/<%= post.user.imageUrl %>"
+          alt=""
+          height="50px"
+         />
+        </div>
+        <div class="col-9">
+         <div
+          class="row d-flex justify-content-between align-items-center ps-1"
+         >
+          <div class="col-10 pt-2">
+           <div>
+            <p>
+             <span class="fw-bold"
+              ><%= post.user.email
+              %></span
+             >
+             <%= post.createdAt %>
+            </p>
+           </div>
+          </div>
+          <div
+           class="col-1 me-2 ps-0"
+          ></div>
+         </div>
+         <div class="col">
+          <%= post.desc %>
+          <div class="row pt-4">
+           <div class="col-1">
+            <i
+             class="fa-solid fa-heart"
+            ></i>
+           </div>
+           <div class="col-1">
+            <span>
+             <i
+              class="fa-solid fa-thumbs-down"
+             ></i>
+            </span>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+       <% }) %> <% } %>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+
+  <%- include("./setups/script") %>
+ </body>
+</html>

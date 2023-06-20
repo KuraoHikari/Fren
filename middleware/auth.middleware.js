@@ -8,8 +8,10 @@ const Bcrypt = require("../utils/bcrypt");
 
 class AuthMiddleware {
  static routeGuard(req, res, next) {
-  if (req.isAuthenticated())
+  if (req.isAuthenticated()) {
    return next();
+  }
+
   res.redirect("/login");
  }
  static async authenticate(

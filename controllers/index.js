@@ -1,3 +1,7 @@
 const AuthController = require("./auth.controller");
+const PostController = require("./post.controller");
 
-module.exports = { AuthController };
+module.exports = {
+ AuthController,
+ PostController,
+};
