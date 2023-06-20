@@ -3,6 +3,9 @@ const {
  AuthController,
 } = require("../controllers");
 const upload = require("../lib/upload");
+const {
+ UploadMiddleware,
+} = require("../middleware");
 
 const router = Router();
 
@@ -17,7 +20,7 @@ router.get(
 
 router.post(
  "/register",
- upload.single("img"),
+ UploadMiddleware.handle,
  AuthController.register
 );
 
