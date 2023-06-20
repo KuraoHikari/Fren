@@ -5,7 +5,7 @@ const {
 
 class Bcrypt {
  static async generateHash(password) {
-  return await hash(password, salt);
+  return await hash(password, 10);
  }
 
  static async compareHash(

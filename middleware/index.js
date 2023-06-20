@@ -1,3 +1,5 @@
 const AuthMiddleware = require("./auth.middleware");
 
-module.exports = { AuthMiddleware };
+module.exports = {
+ AuthMiddleware,
+};
