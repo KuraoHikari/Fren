@@ -1,9 +1,6 @@
 const {
  PrismaClient,
- Prisma,
 } = require("@prisma/client");
-
-const passport = require("../lib/passport");
 
 const prisma = new PrismaClient();
 
@@ -29,12 +26,34 @@ class PostController {
       responses: true,
      },
     });
+
    posts.forEach((post) => {
     if (post.user) {
      delete post.user.password;
     }
-   });
 
+    if (post.createdAt) {
+     const date = new Date(
+      post.createdAt
+     );
+     post.createdAt =
+      date.toLocaleString("en-US");
+    }
+    post.like = 0;
+    post.dislike = 0;
+    if (post.responses.length > 0) {
+     post.responses.forEach(
+      (response) => {
+       if (response.like) {
+        post.like++;
+       }
+       if (response.dislike) {
+        post.dislike++;
+       }
+      }
+     );
+    }
+   });
    console.log(posts);
 
    delete user.password;

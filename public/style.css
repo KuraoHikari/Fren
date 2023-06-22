@@ -14,3 +14,20 @@ a {
 .input-box:focus {
  outline: none;
 }
+.button-container {
+ display: flex;
+ justify-content: space-between;
+ width: 80px;
+}
+
+.button {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background-color: #4caf50;
+ border: none;
+ color: white;
+ padding: 10px;
+ cursor: pointer;
+ border-radius: 4px;
+}

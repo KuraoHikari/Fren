@@ -32,12 +32,10 @@ model Post {
 }
 
 model Response {
-    id         Int      @id @default(autoincrement())
+    id          Int      @id @default(autoincrement())
     createdAt   DateTime @default(now())
-    imageUrl    String
-    desc        String
-    Like        Boolean
-    Dislike     Boolean
+    like        Boolean
+    dislike     Boolean
     userId      Int
     user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
     postId      Int
